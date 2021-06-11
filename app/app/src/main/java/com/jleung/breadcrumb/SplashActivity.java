@@ -8,8 +8,6 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.jleung.breadcrumb.onboarding.OnboardingActivity;
-
 public class SplashActivity extends AppCompatActivity {
 
     @SuppressWarnings("FieldCanBeLocal")
@@ -32,7 +30,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(getApplicationContext(), OnboardingActivity.class);
+                Intent intent = new Intent(getApplicationContext(), UpdateLocationActivity.class);
                 startActivity(intent);
                 finish();
             }
