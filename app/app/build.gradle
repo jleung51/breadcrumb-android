@@ -22,9 +22,9 @@ android {
     }
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.pennapps2019.application"
+        applicationId "com.jleung.breadcrumb"
         minSdkVersion 22
-        targetSdkVersion 28
+        targetSdkVersion 30
         versionCode 3
         versionName "1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
