@@ -1,26 +1,10 @@
-# Template Android Application
+# Breadcrumb: Android Application
 
-Template Android application.
+Android application to keep your friends and family updated with your locations during travel.
 
 ___
 
 ## Template Quickstart
-
-### Application Basics
-
-In `app/src/main/AndroidManifest.xml`:
-* Refactor the package (use Smart Rename)
-* Remove permissions which are not required
-
-In `app/src/main/res/values/strings.xml`:
-* Set the application name
-
-In `app/src/main/java/com/APPNAME/application/SplashActivity.java`:
-* Set the next activity after the Splash screen
-
-Replace `app/src/main/res/logo.xml` with your application logo.
-
-Add a new application launcher icon.
 
 ### Google Maps
 
@@ -43,22 +27,6 @@ In `app/src/main/res/values/styles.xml`:
 
 In `app/src/main/res/values/colors.xml`:
 * Change the colors to the preferred style
-
-### NFC Scanner
-
-In `app/src/main/java/com/APPNAME/application/NfcScanActivity.java`:
-* Implement an action and error handling upon reading a new NFC tag (see `processError()` and `processData()`)
-
-In `app/src/main/res/layout/activity_scan.xml`:
-* Customize the layout and content
-
-### Nearby Connections
-
-Copy and modify the sample payload callback function in `app/src/main/java/com/APPNAME/application/NearbyConnections.java` to execute an action upon receiving data.
-
-Call the public functions of the class to initialize and advertise/discover other devices.
-
-Add methods to create operations which interact with the other devices.
 
 ### Repeating Services
 
@@ -83,7 +51,7 @@ ___
 
 ### Android
 
-Install [Android Studio](https://developer.android.com/studio/).
+Install [Android Studio](https://developer.android.com/studio/) and import the project.
 
 #### Google Maps API Key (for development builds)
 
