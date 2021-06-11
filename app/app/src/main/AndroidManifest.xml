@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.template.application">
+    package="com.jleung.breadcrumb">
 
-    <!-- TODO: Refactor the package name -->
-
-    <!-- TODO: Choose only the necessary permissions -->
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -21,38 +18,34 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-
+        <activity
+            android:name=".UpdateLocation"
+            android:label="@string/title_activity_update_location"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".onboarding.OnboardingActivity"
             android:theme="@style/FullscreenTheme" />
-
         <activity
             android:name=".MapsActivity"
             android:theme="@style/FullscreenTheme" />
-
         <activity
             android:name=".location.LocationRecorderActivity"
             android:theme="@style/FullscreenTheme" />
-
         <activity
             android:name=".preferences.SettingsActivity"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme" />
-
         <activity
             android:name=".NfcScanActivity"
-            android:theme="@style/FullscreenTheme" />
-
-        <!-- Services -->
+            android:theme="@style/FullscreenTheme" /> <!-- Services -->
         <service android:name=".async.RepeatingService" />
-
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -64,8 +57,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
-
     </application>
 
 </manifest>

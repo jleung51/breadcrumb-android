@@ -54,7 +54,7 @@
 
     <fragment
         android:id="@+id/button_switch_bar"
-        android:name="com.template.application.buttons.ButtonSwitchBarFragment"
+        android:name="com.jleung.breadcrumb.buttons.ButtonSwitchBarFragment"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:gravity="top"
