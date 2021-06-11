@@ -6,10 +6,15 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.snackbar.Snackbar;
+import com.jleung.breadcrumb.breadcrumbs.Crumb;
+import com.jleung.breadcrumb.breadcrumbs.CrumbAdapter;
 import com.jleung.breadcrumb.databinding.ActivityUpdateLocationBinding;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.LinkedList;
 import java.util.List;
 
 public class UpdateLocationActivity extends AppCompatActivity {
@@ -35,11 +40,11 @@ public class UpdateLocationActivity extends AppCompatActivity {
         );
 
         // Set up list of crumbs
-        List<String> crumbsList = new ArrayList<>();
-        crumbsList.add("Crumb 1");
-        crumbsList.add("Crumb 2");
-        ArrayAdapter<String> listAdapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_list_item_1, crumbsList
+        LinkedList<Crumb> crumbsList = new LinkedList<>();
+        crumbsList.addFirst(new Crumb("Mount Revelstoke", new LatLng(0, 0), Calendar.getInstance()));
+        crumbsList.addFirst(new Crumb("Radium Hot Springs", new LatLng(0, 0), Calendar.getInstance()));
+        CrumbAdapter listAdapter = new CrumbAdapter(
+                this, R.layout.layout_single_crumb, crumbsList
         );
 
         ListView listView = findViewById(R.id.crumbs_list);
