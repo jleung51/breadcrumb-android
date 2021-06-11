@@ -5,10 +5,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.jleung.breadcrumb.databinding.ActivityUpdateLocationBinding;
@@ -17,8 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UpdateLocationActivity extends AppCompatActivity {
-
-    private AppBarConfiguration appBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +25,7 @@ public class UpdateLocationActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
 
 //        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_update_location);
-//        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+//        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         // Set up floating action button
@@ -52,10 +46,4 @@ public class UpdateLocationActivity extends AppCompatActivity {
         listView.setAdapter(listAdapter);
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_update_location);
-        return NavigationUI.navigateUp(navController, appBarConfiguration)
-                || super.onSupportNavigateUp();
-    }
 }
