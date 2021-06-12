@@ -14,6 +14,7 @@ import androidx.fragment.app.DialogFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.jleung.breadcrumb.breadcrumbs.Crumb;
 import com.jleung.breadcrumb.breadcrumbs.CrumbAdapter;
+import com.jleung.breadcrumb.breadcrumbs.CrumbRepository;
 import com.jleung.breadcrumb.breadcrumbs.NewCrumbDialog;
 import com.jleung.breadcrumb.databinding.ActivityUpdateLocationBinding;
 
@@ -25,7 +26,7 @@ public class UpdateLocationActivity extends AppCompatActivity
 
     private static final String TAG = UpdateLocationActivity.class.getName();
 
-    private LinkedList<Crumb> crumbsList;
+    private CrumbRepository crumbRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,15 +52,15 @@ public class UpdateLocationActivity extends AppCompatActivity
             }
         });
 
-        // Set up list of crumbs
-        crumbsList = new LinkedList<>();
+        // Set up crumbs
+        crumbRepository = new CrumbRepository();
 
         // Sample crumbs for testing
-        crumbsList.addFirst(new Crumb("Mount Revelstoke", new LatLng(50.998729, -118.19554), Calendar.getInstance()));
-        crumbsList.addFirst(new Crumb("Radium Hot Springs", new LatLng(50.6218902, -116.0808746), Calendar.getInstance()));
+        crumbRepository.create("Mount Revelstoke", new LatLng(50.998729, -118.19554), Calendar.getInstance());
+        crumbRepository.create("Radium Hot Springs", new LatLng(50.6218902, -116.0808746), Calendar.getInstance());
 
         CrumbAdapter listAdapter = new CrumbAdapter(
-                this, R.layout.layout_single_crumb, crumbsList
+                this, R.layout.layout_single_crumb, crumbRepository.getList()
         );
 
         ListView listView = findViewById(R.id.crumbs_list);
@@ -97,11 +98,11 @@ public class UpdateLocationActivity extends AppCompatActivity
             description = "Location";
         }
 
-        crumbsList.addFirst(new Crumb(
+        crumbRepository.create(
                 description,
                 new LatLng(50.998729, -118.19554),
                 Calendar.getInstance()
-        ));
+        );
     }
 
 }
