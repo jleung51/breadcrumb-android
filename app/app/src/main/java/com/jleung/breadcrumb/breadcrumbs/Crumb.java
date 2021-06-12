@@ -4,9 +4,12 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.UUID;
 
 // Data structure to contain a single dropped breadcrumb
 public class Crumb {
+
+    private final UUID id;
 
     private String description;
 
@@ -15,9 +18,14 @@ public class Crumb {
     private final Calendar time;
 
     public Crumb(String description, LatLng location, Calendar time) {
+        this.id = UUID.randomUUID();
         this.description = description;
         this.location = location;
         this.time = time;
+    }
+
+    public String getIdStr() {
+        return id.toString();
     }
 
     public String getDescription() {
