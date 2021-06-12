@@ -37,9 +37,16 @@ public class Crumb {
     }
 
     public String getTimeReadable() {
+
+        String minute = String.valueOf(time.get(Calendar.MINUTE));
+        // Add leading 0 to minutes
+        if (minute.length() < 2) {
+            minute = "0" + minute;
+        }
+
         return time.get(Calendar.HOUR_OF_DAY) +
                 ":" +
-                time.get(Calendar.MINUTE) +
+                minute +
                 " | " +
                 time.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) +
                 " " +
