@@ -67,5 +67,6 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="fab_content_description">Update Current Location</string>
+    <string name="dialog_new_crumb_description">Description</string>
 
 </resources>

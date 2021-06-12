@@ -9,20 +9,23 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.nearby.messages.internal.Update;
-import com.google.android.material.snackbar.Snackbar;
 import com.jleung.breadcrumb.breadcrumbs.Crumb;
 import com.jleung.breadcrumb.breadcrumbs.CrumbAdapter;
+import com.jleung.breadcrumb.breadcrumbs.NewCrumbDialog;
 import com.jleung.breadcrumb.databinding.ActivityUpdateLocationBinding;
 
 import java.util.Calendar;
 import java.util.LinkedList;
 
-public class UpdateLocationActivity extends AppCompatActivity {
+public class UpdateLocationActivity extends AppCompatActivity
+        implements NewCrumbDialog.NewCrumbDialogListener {
 
     private static final String TAG = UpdateLocationActivity.class.getName();
+
+    private LinkedList<Crumb> crumbsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,15 +42,22 @@ public class UpdateLocationActivity extends AppCompatActivity {
 //        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         // Set up floating action button
-        binding.fab.setOnClickListener(view -> Snackbar
-                .make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        );
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NewCrumbDialog dialog = new NewCrumbDialog();
+                dialog.show(getSupportFragmentManager(), "Drop a Breadcrumb");
+                // For responses, see onDialogPositiveClick / onDialogNegativeClick
+            }
+        });
 
         // Set up list of crumbs
-        LinkedList<Crumb> crumbsList = new LinkedList<>();
-        crumbsList.addFirst(new Crumb("Mount Revelstoke", new LatLng(50.998729,-118.19554), Calendar.getInstance()));
-        crumbsList.addFirst(new Crumb("Radium Hot Springs", new LatLng(50.6218902,-116.0808746), Calendar.getInstance()));
+        crumbsList = new LinkedList<>();
+
+        // Sample crumbs for testing
+        crumbsList.addFirst(new Crumb("Mount Revelstoke", new LatLng(50.998729, -118.19554), Calendar.getInstance()));
+        crumbsList.addFirst(new Crumb("Radium Hot Springs", new LatLng(50.6218902, -116.0808746), Calendar.getInstance()));
+
         CrumbAdapter listAdapter = new CrumbAdapter(
                 this, R.layout.layout_single_crumb, crumbsList
         );
@@ -70,7 +80,7 @@ public class UpdateLocationActivity extends AppCompatActivity {
         String descriptionEscapedChars = description.replace(" ", "%20");
         Uri gmapsUri = Uri.parse(
                 "geo:0,0?q=" + location.latitude + "," + location.longitude +
-                "(" + descriptionEscapedChars + ")"
+                        "(" + descriptionEscapedChars + ")"
         );
         Log.d(TAG, "Opening URI in Google Maps: " + gmapsUri.toString());
 
@@ -79,4 +89,20 @@ public class UpdateLocationActivity extends AppCompatActivity {
         startActivity(mapIntent);
     }
 
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog, String description) {
+        // New crumb created from NewCrumbDialog
+
+        if (description == null || description.isEmpty()) {
+            description = "Location";
+        }
+
+        crumbsList.addFirst(new Crumb(
+                description,
+                new LatLng(50.998729, -118.19554),
+                Calendar.getInstance()
+        ));
+    }
+
 }
+
