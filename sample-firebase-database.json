@@ -1,0 +1,18 @@
+{
+  "crumbs" : {
+    "-Mc7U_vPP0a3AjXVTOTe" : {
+      "description" : "Mount Revelstoke",
+      "id" : "3f04b2e1-09d7-4147-915e-25232dde00b0",
+      "latitude" : 50.998729,
+      "longitude" : -118.19554,
+      "time" : 1623146700000
+    },
+    "-Mc7U_vZnu6gTjNUUxvr" : {
+      "description" : "Radium Hot Springs",
+      "id" : "9b85d55a-1758-40c7-a0ed-23b1e1c76102",
+      "latitude" : 50.6218902,
+      "longitude" : -116.0808746,
+      "time" : 1623364660000
+    }
+  }
+}
