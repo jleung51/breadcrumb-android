@@ -15,11 +15,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.jleung.breadcrumb.breadcrumbs.Crumb;
 import com.jleung.breadcrumb.breadcrumbs.CrumbAdapter;
 import com.jleung.breadcrumb.breadcrumbs.CrumbRepository;
+import com.jleung.breadcrumb.breadcrumbs.CrumbRepositoryFirebaseImpl;
 import com.jleung.breadcrumb.breadcrumbs.NewCrumbDialog;
 import com.jleung.breadcrumb.databinding.ActivityUpdateLocationBinding;
 
 import java.util.Calendar;
-import java.util.LinkedList;
+import java.util.List;
 
 public class UpdateLocationActivity extends AppCompatActivity
         implements NewCrumbDialog.NewCrumbDialogListener {
@@ -52,17 +53,14 @@ public class UpdateLocationActivity extends AppCompatActivity
             }
         });
 
-        // Set up crumbs
-        crumbRepository = new CrumbRepository();
-
-        // Sample crumbs for testing
-        crumbRepository.create("Mount Revelstoke", new LatLng(50.998729, -118.19554), Calendar.getInstance());
-        crumbRepository.create("Radium Hot Springs", new LatLng(50.6218902, -116.0808746), Calendar.getInstance());
-
+        // Set up crumb repository and list adapter to read from the repository
+        crumbRepository = new CrumbRepositoryFirebaseImpl();
         CrumbAdapter listAdapter = new CrumbAdapter(
-                this, R.layout.layout_single_crumb, crumbRepository.getList()
+                this, R.layout.layout_single_crumb, crumbRepository.getCrumbs()
         );
 
+        // Synchronize updates to the crumb lit on screen
+        crumbRepository.attachListAdapter(listAdapter);
         ListView listView = findViewById(R.id.crumbs_list);
         listView.setAdapter(listAdapter);
 
@@ -75,7 +73,10 @@ public class UpdateLocationActivity extends AppCompatActivity
                 openGoogleMaps(c.getDescription(), c.getLocation());
             }
         });
+
     }
+
+    private List<Crumb> crumbList;  // Reference to the list managed by crumbRepository
 
     private void openGoogleMaps(String description, LatLng location) {
         String descriptionEscapedChars = description.replace(" ", "%20");
@@ -103,6 +104,26 @@ public class UpdateLocationActivity extends AppCompatActivity
                 new LatLng(50.998729, -118.19554),
                 Calendar.getInstance()
         );
+    }
+
+    private void createSampleCrumbs() {
+
+        Calendar timeRevelstoke = Calendar.getInstance();
+        timeRevelstoke.setTimeInMillis(1623146700000L);
+        crumbRepository.create(
+                "Mount Revelstoke",
+                new LatLng(50.998729, -118.19554),
+                timeRevelstoke
+        );
+
+        Calendar timeRadium = Calendar.getInstance();
+        timeRadium.setTimeInMillis(1623364660000L);
+        crumbRepository.create(
+                "Radium Hot Springs",
+                new LatLng(50.6218902, -116.0808746),
+                timeRadium
+        );
+
     }
 
 }

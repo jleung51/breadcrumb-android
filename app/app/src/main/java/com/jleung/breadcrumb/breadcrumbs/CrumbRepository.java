@@ -3,24 +3,14 @@ package com.jleung.breadcrumb.breadcrumbs;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Calendar;
-import java.util.LinkedList;
 import java.util.List;
 
-public class CrumbRepository {
+public interface CrumbRepository {
 
-    private LinkedList<Crumb> crumbsList;
+    void attachListAdapter(CrumbAdapter adapter);
 
-    public CrumbRepository() {
-        crumbsList = new LinkedList<>();
-    }
+    void create(String description, LatLng location, Calendar time);
 
-    public void create(String description, LatLng location, Calendar time) {
-        Crumb c = new Crumb(description, location, time);
-        crumbsList.addFirst(c);
-    }
-
-    public List<Crumb> getList() {
-        return crumbsList;
-    }
+    List<Crumb> getCrumbs();
 
 }

@@ -2,6 +2,9 @@
 
 Android application to keep your friends and family updated with your locations during travel.
 
+
+https://firebase.google.com/docs/database/android/start?authuser=0
+
 ___
 
 ## Template Quickstart
