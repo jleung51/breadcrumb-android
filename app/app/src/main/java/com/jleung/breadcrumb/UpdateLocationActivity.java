@@ -14,6 +14,7 @@ import androidx.fragment.app.DialogFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.jleung.breadcrumb.breadcrumbs.Crumb;
 import com.jleung.breadcrumb.breadcrumbs.CrumbAdapter;
+import com.jleung.breadcrumb.breadcrumbs.CrumbFirebaseMessagingService;
 import com.jleung.breadcrumb.breadcrumbs.CrumbRepository;
 import com.jleung.breadcrumb.breadcrumbs.CrumbRepositoryFirebaseImpl;
 import com.jleung.breadcrumb.breadcrumbs.NewCrumbDialog;
@@ -73,6 +74,8 @@ public class UpdateLocationActivity extends AppCompatActivity
                 openGoogleMaps(c.getDescription(), c.getLocation());
             }
         });
+
+        CrumbFirebaseMessagingService.displayToken(this);
 
     }
 
