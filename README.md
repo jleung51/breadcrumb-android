@@ -12,7 +12,7 @@ Inspired by the fairy tale [Hansel and Gretel](https://en.wikipedia.org/wiki/Han
 
 Install [Android Studio](https://developer.android.com/studio/) and import the project.
 
-### Firebase
+### Firebase: Realtime Database
 
 Breadcrumb requires a Firebase Realtime Database to store and share information.
 
@@ -22,9 +22,14 @@ First, modify the package name so you can attach your own database:
 
 [Create a project in Google Cloud.](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
 
-Follow [these instructions](https://firebase.google.com/docs/database/android/start?authuser=0) to create a Firebase Realtime Database, using your new package name.
+Follow [these instructions](https://firebase.google.com/docs/database/android/start?authuser=0) to create a Firebase Realtime Database, using your newly changed package name.
 
-When you build and run the Android application, it will connect to your new database.
+Credentials will be generated for you and downloaded as the file `google-services.json`. Place this file in the project root directory.
+
+To view and manage your Database from the online portal, go to the [Firebase Realtime Database console](https://console.firebase.google.com/).
+
+
+When you build and run the Android application, it will connect to your new database. Data structures will be created on the fly as required.
 
 ## Creating a Production Release
 
