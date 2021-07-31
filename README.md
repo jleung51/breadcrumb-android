@@ -1,10 +1,14 @@
 # Breadcrumb: Android Application
 
-Android and Google Firebase application to keep your friends and family updated with your locations during your travels.
+Android and Google Firebase application for **Breadcrumb**, an app to keep your friends and family updated with your locations during your travels.
 
-The application allows a traveller to save a "breadcrumb" with the current location, time, and a custom description. Friends and family with the app receive a notification and are able to view previous breadcrumbs.
+The app allows a traveller to save a "breadcrumb" with the current location, time, and a custom description. Friends and family with the app receive a notification and are able to view previous breadcrumbs.
 
 Inspired by the fairy tale [Hansel and Gretel](https://en.wikipedia.org/wiki/Hansel_and_Gretel), children who drop breadcrumbs while following a witch into the woods so they can find their way back out.
+
+## Other Repositories
+
+See the NodeJS server here: https://github.com/jleung51/breadcrumb-server
 
 ## Setup
 
