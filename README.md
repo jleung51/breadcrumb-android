@@ -24,7 +24,7 @@ First, modify the package name so you can attach your own database:
 
 Follow [these instructions](https://firebase.google.com/docs/database/android/start?authuser=0) to create a Firebase Realtime Database, using your newly changed package name.
 
-Credentials will be generated for you and downloaded as the file `google-services.json`. Place this file in the project root directory. If you do not have this file:
+Credentials will be generated for you and downloaded as the file `google-services.json`. Place this file in the project directory, under `app/app/`. If you do not have this file:
 * Navigate to the project in the Firebase console
 * Click the Gear icon in the sidebar and select _Project Settings_
 * Under the _Your Apps_ section, download the `google-services.json` file
